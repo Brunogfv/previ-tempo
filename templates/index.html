@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Previsão do Tempo</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div id="weather-bg"></div>
+
+    <div class="container">
+        <header>
+            <h1><span class="header-icon">⛅</span> Previsão do Tempo</h1>
+            <p class="subtitle">Clima atual e previsão para os próximos dias</p>
+        </header>
+
+        <form class="search-box" id="search-form">
+            <div class="search-inner">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="city-input" placeholder="Digite o nome da cidade..." autofocus>
+            </div>
+            <button type="submit">Buscar</button>
+        </form>
+
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Carregando previsão...</p>
+        </div>
+
+        <div id="error" class="hidden"></div>
+
+        <div id="weather-result" class="hidden">
+
+            <div class="current-weather" id="current-weather">
+                <div class="weather-accent" id="weather-accent"></div>
+                <div class="weather-main">
+                    <div class="weather-temp">
+                        <img id="weather-icon" src="" alt="">
+                        <div class="temp-group">
+                            <span class="temp-value" id="temp-value">--</span>
+                            <span class="temp-unit">°C</span>
+                        </div>
+                    </div>
+                    <div class="weather-info">
+                        <h2 id="city-name">--</h2>
+                        <p class="weather-desc" id="weather-desc">--</p>
+                        <p class="feels-like">🌡️ Sensação: <span id="feels-like">--</span>°C</p>
+                        <p class="extra-info" id="extra-info"></p>
+                    </div>
+                </div>
+                <div class="weather-details">
+                    <div class="detail-item">
+                        <span class="detail-icon">💧</span>
+                        <span class="detail-label">Umidade</span>
+                        <span class="detail-value" id="umidade">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">💨</span>
+                        <span class="detail-label">Vento</span>
+                        <span class="detail-value" id="vento">-- km/h</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🌡️</span>
+                        <span class="detail-label">Pressão</span>
+                        <span class="detail-value" id="pressao">-- hPa</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">⬆️⬇️</span>
+                        <span class="detail-label">Máx / Min</span>
+                        <span class="detail-value" id="max-min">--° / --°</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🌅</span>
+                        <span class="detail-label">Nascer sol</span>
+                        <span class="detail-value" id="nascer-sol">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">🌇</span>
+                        <span class="detail-label">Pôr sol</span>
+                        <span class="detail-value" id="por-sol">--</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">☁️</span>
+                        <span class="detail-label">Nuvens</span>
+                        <span class="detail-value" id="nuvens">--%</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-icon">👁️</span>
+                        <span class="detail-label">Visibilidade</span>
+                        <span class="detail-value" id="visibilidade">-- km</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-section">
+                <h3>📅 Previsão para os próximos dias</h3>
+                <div class="forecast-cards" id="forecast-cards"></div>
+            </div>
+
+            <div class="map-section">
+                <h3>🗺️ Localização</h3>
+                <div id="map"></div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
