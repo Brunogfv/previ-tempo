@@ -3,3 +3,9 @@ __pycache__/
 *.pyc
 *.pyo
 .DS_Store
+error.txt
+output.txt
+out.txt
+err.txt
+venv/
+.env.*
