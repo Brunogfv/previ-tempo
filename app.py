@@ -96,7 +96,8 @@ def process_forecast(forecast_data):
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    import time
+    return render_template("index.html", cache_buster=int(time.time()))
 
 
 @app.route("/api/weather")
